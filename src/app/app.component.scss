@@ -1,6 +1,16 @@
+*{  
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .container {
     width : 100%;
     display: flex;
     justify-content: start;
     align-items: center;
+    height: 670px;
 }
+
+
+
