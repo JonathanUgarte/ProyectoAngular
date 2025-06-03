@@ -1,0 +1,39 @@
+<h1>Lista de autos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        @for (car of cars; track car.name){
+        <tr>
+            <td>
+                <img class="img-thumbnail" width="100" [src]="car.image" [alt]="car.image"/>
+            </td>
+            <td >{{car.name}}</td>
+            <td class="text-center">{{car.model}}</td>
+            <td class="text-center">{{car.price | currency}}</td>
+            @if(car.stock > 0) { 
+                <td class="text-center">{{car.stock}}</td>
+                <td>
+                    <app-input-integer [(quantity)]="car.quantity" [max]="car.stock" (maxReached)="maxReached($event)"></app-input-integer>
+                </td>
+            }@else {
+                <td><span class="btn btn-info" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .60rem;">Sin stock</span></td>
+            }
+
+        </tr>
+        } @empty {
+             <tr>
+                <td colspan="4">No hay autos para mostrar.</td>
+            </tr>
+        }
+    </tbody>
+</table>
