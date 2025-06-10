@@ -1,8 +1,12 @@
 .input {
-    display: flex;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 input {
     width: 30px;
+    height: 30px;
     border: none;
 }

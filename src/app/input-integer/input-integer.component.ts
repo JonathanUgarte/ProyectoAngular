@@ -25,11 +25,10 @@ export class InputIntegerComponent {
   @Output()
   maxReached: EventEmitter<string> = new EventEmitter<string>();
 
-   // poniendole : Wine le indica el tipo que es wine
+  
   upQuantity(): void {
     if(this.quantity < this.max){
       this.quantity++;
-      //El emit junto con el Output hace funcionen los  () 
       this.quantityChange.emit(this.quantity);
     }else {
       this.maxReached.emit("Se alcanzo el maximo del stock");
