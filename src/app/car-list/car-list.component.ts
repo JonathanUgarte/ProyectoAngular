@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Car} from './Car'
+import { CarCartService } from '../car-cart.service';
 
 @Component({
   selector: 'app-car-list',
@@ -75,6 +76,18 @@ export class CarListComponent {
     quantity: 0,
     },
   ];
+
+
+  constructor (private cart : CarCartService){
+  }
+
+  addToCart(car: Car):void {
+    this.cart.addToCart(car);
+    car.stock -= car.quantity;
+    car.quantity =0;
+  }
+
+
 
   maxReached(m:string){
     alert(m);
