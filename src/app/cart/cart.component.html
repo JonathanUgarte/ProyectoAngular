@@ -1,6 +1,11 @@
-<h5>Carrito de compras</h5>
-<ul>
-    <li *ngFor="let c of cartList$ |async">
-        {{c.name}} :{{c.quantity}}
+<button (click)="toggleCart()" class="btn btn-outline-info btn-sm float-end me-1 mt-1" style="color: black;">
+  🛒 Ver Carrito
+</button>
+
+<div *ngIf="showCart" style="margin-top: 1rem;">
+  <ul>
+    <li *ngFor="let c of cartList$ | async">
+      {{ c.name }} : {{ c.quantity }}
     </li>
-</ul>
+  </ul>
+</div>

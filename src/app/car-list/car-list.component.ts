@@ -86,8 +86,7 @@ export class CarListComponent {
     car.stock -= car.quantity;
     car.quantity =0;
   }
-
-
+ 
 
   maxReached(m:string){
     alert(m);

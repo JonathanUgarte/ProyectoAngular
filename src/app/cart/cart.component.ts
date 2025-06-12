@@ -16,6 +16,11 @@ export class CartComponent {
   constructor (private cart : CarCartService){
     this.cartList$ = cart.cartList.asObservable();
   }
+  
+  showCart = false;
 
+toggleCart() {
+  this.showCart = !this.showCart;
+}
 }
 

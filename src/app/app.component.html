@@ -1,14 +1,19 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid" style="background-color: #dbeffc; padding: 10px;">
-    <a class="navbar-brand">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">JL-Cars</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" [routerLink]="'/'">Home</a>
-        <a class="nav-link" [routerLink]="'/about'">Contactos</a>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/'">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/about'">Contactos</a>
+        </li>
+      </ul>
+        <app-cart></app-cart>
     </div>
   </div>
 </nav>
@@ -22,4 +27,5 @@
       <p class="card-text">Contactanos aqui</p>
     </div>
   </div>
+  
 </footer>
