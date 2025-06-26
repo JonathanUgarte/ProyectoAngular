@@ -2,7 +2,6 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Imagen</th>
             <th>Nombre</th>
             <th>Modelo</th>
             <th>Precio</th>
@@ -15,9 +14,6 @@
        
         @for (car of cars; track car.name){
         <tr [ngClass]="{'clearance': car.clearance}">
-            <td>
-                <img class="img-thumbnail" width="100" [src]="car.image" [alt]="car.image"/>
-            </td>
             <td >{{car.name}}</td>
             <td class="text-center">{{car.model}}</td>
             <td class="text-center">{{car.price | currency}}</td>
@@ -32,7 +28,11 @@
             }@else {
                 <td><span class="btn btn-info" style="--bs-btn-padding-y: .30rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .70rem;">Sin stock</span></td><td></td><td></td>
             }
-
+             <td>
+        <button (click)="deleteCar(car.id)" class="btn btn-danger btn-sm">
+                🗑️ Eliminar
+        </button>
+  </td>
         </tr>
         } @empty {
              <tr>

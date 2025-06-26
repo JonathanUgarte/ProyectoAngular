@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Car} from './Car'
 import { CarCartService } from '../car-cart.service';
+import { CarDataService } from '../car-data.service';
 
 @Component({
   selector: 'app-car-list',
@@ -10,75 +11,17 @@ import { CarCartService } from '../car-cart.service';
 })
 export class CarListComponent {
 
-  cars : Car[]= [
-   {
-    name: "Fiesta Kinetic",
-    model: 2015,
-    price: 15000000,
-    stock: 5,
-    image: 'assets/fiesta-kinetic',
-    clearance: false,
-    quantity: 0,
-    },
-  {
-    name: "Citroen Berlingo",
-    model: 2011,
-    price: 12000000,
-    stock: 10,
-    image: 'assets/img/citroen',
-    clearance: true,
-    quantity: 0,
-  },
-  {
-    name: "Clio Mio",
-    model: 2006,
-    price: 6000000,
-    stock: 5,
-    image: 'assets/img/clio',
-    clearance: false,
-    quantity: 0,
-
-  },
-   {
-    name: "Ford Focus",
-    model: 2020,
-    price: 25000000,
-    stock: 0,
-    image: 'assets/img/focus',
-    clearance: false,
-    quantity: 0,
-  },
-  {
-    name: "Fiat Toro",
-    model: 2025,
-    price: 45000000,
-    stock: 2,
-    image: 'assets/img/toro',
-    clearance: true,
-    quantity: 0,
-    },
-    {
-    name: "Renault Parnet",
-    model: 2013,
-    price: 13000000,
-    stock: 8,
-    image: 'assets/img/parnet',
-    clearance: true,
-    quantity: 0,
-    },
-    {
-    name: "Chevrolet Corsa",
-    model: 2008,
-    price: 5000000,
-    stock: 0,
-    image: 'assets/img/corsa',
-    clearance: false,
-    quantity: 0,
-    },
-  ];
+  cars : Car[]= [];
 
 
-  constructor (private cart : CarCartService){
+  constructor (private cart : CarCartService,
+               private carsDataService : CarDataService){
+  }
+
+  ngOnInit (): void {
+    this.carsDataService.getAll()
+      .subscribe(cars=>this.cars = cars);
+       this.loadCars();
   }
 
   addToCart(car: Car):void {
@@ -91,6 +34,15 @@ export class CarListComponent {
   maxReached(m:string){
     alert(m);
   }
+  loadCars(): void {
+    this.carsDataService.getAll().subscribe(cars => this.cars = cars);
+}
+  deleteCar(id: number | string): void {
+       this.carsDataService.deleteCar(id).subscribe(() => {
+      // Vuelve a cargar los autos después de borrar
+      this.loadCars();
+  });
+}
 
 }
 

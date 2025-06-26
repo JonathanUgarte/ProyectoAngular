@@ -2,10 +2,18 @@
   🛒 Ver Carrito
 </button>
 
-<div *ngIf="showCart" style="margin-top: 1rem;">
-  <ul>
-    <li *ngFor="let c of cartList$ | async">
-      {{ c.name }} : {{ c.quantity }}
-    </li>
-  </ul>
+<div *ngIf="showCart" class="cart-popup shadow">
+  <h6 class="cart-title m-2">🛍️ Mis compras</h6>
+
+  <ng-container *ngIf="(cartList$ | async) as cartList">
+    <div *ngIf="cartList.length === 0" class="text-center text-muted p-2">
+      No has comprado nada aún.
+    </div>
+
+    <ul *ngIf="cartList.length > 0" class="list-unstyled m-0 p-2">
+      <li *ngFor="let c of cartList">
+        {{ c.name }} : {{ c.quantity }}
+      </li>
+    </ul>
+  </ng-container>
 </div>
