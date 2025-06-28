@@ -6,6 +6,6 @@ export interface Car {
     stock: number;
     clearance: boolean;
     quantity: number;
-     id: number;  
+     id: string;  
 }
 
