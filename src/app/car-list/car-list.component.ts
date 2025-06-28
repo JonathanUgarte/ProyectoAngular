@@ -39,8 +39,7 @@ export class CarListComponent {
 }
   deleteCar(id: number | string): void {
        this.carsDataService.deleteCar(id).subscribe(() => {
-      // Vuelve a cargar los autos después de borrar
-      this.loadCars();
+        this.loadCars();
   });
 }
 
